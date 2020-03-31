@@ -1,20 +1,46 @@
 #include<stdio.h>
 #include<string.h>
-
 char * encrypt(char *, int);
 
 char * decrypt(char *, int);
-
 int main(){
-    char test[50], test2[50];
-    printf("Enter the word to be Caesar'd\n");
-    scanf("%s", test);
-    printf("%s\n",encrypt(test,5));
-    scanf("%s", test2);
-    printf("%s\n",decrypt(test2,4));
+    int case_no; FILE *fPointer;
+    printf("### CAESAR_CYPHER ###\n");
+    printf("Enter your name\n"); char name[50];
+    scanf("%s",name);
+    printf("Type 1 to encrypt your data \nType 2 to decrypt your data\nType 3 to exit\n");
+    scanf("%d",&case_no);
+    switch (case_no)
+    {
+    case 1:
+        fPointer=fopen("data.xlsx","a");
+        printf("Enter data to be encrypted\n");
+        char data_encrypt[100]; scanf("%s",data_encrypt); fprintf(fPointer,"%s",name);
+        printf("Enter encryption number\n"); int n; scanf("%d",&n); fprintf(fPointer,",%s,%d,%s","encryption",n,data_encrypt);
+        char temp1[100]; strcpy(temp1,encrypt(data_encrypt,n));
+        printf("%s\n",temp1);
+        fprintf(fPointer,",%s\n",temp1);
+        fclose(fPointer);
+        break;
+    case 2:
+        fPointer=fopen("data.xlsx","a");
+        printf("Enter data to be decrypted\n");
+        char data_decrypt[100]; scanf("%s",data_decrypt); fprintf(fPointer,"%s",name);
+        printf("Enter decryption number\n"); int m; scanf("%d",&m);fprintf(fPointer,",%s,%d,%s","decryption",m,data_decrypt);
+        char temp2[100]; strcpy(temp2,decrypt(data_decrypt,m));
+        printf("%s\n",temp2);
+        fprintf(fPointer,",%s\n",temp2);
+        fclose(fPointer);
+        break;
+      case 3:
+        printf("exiting...\n");
+        break;
+    default:
+        {printf("invalid choice, please enter your choice again\n");
+        main();}
+    }
     return 0;
 }
-
 char * encrypt(char *message, int shift_key){
     char *index = message;
     while(*index != '\0'){
