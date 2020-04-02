@@ -81,3 +81,10 @@ char * decrypt(char *message, int shift_key){
     }
     return message;
 }
+
+void write_to_file(char * word, int key, char * out, char * type){
+    FILE * fPointer = fopen("Data.xlsx","a");
+    fprintf(fPointer,"%s,%s,%d,%s\n",type,word,key,out);
+    fclose(fPointer);
+}
+
