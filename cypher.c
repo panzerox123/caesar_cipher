@@ -44,7 +44,8 @@ int main(){
 */
 
 char * encrypt(char *message, int shift_key){
-    char *index = message;
+int begin=0;char s;count=0,int end;    
+char *index = message;
     while(*index != '\0'){
         if(*index>='A' && *index <='Z'){
             if(*index + shift_key > 'Z')
@@ -73,7 +74,8 @@ char * encrypt(char *message, int shift_key){
 }
 
 char * decrypt(char *message, int shift_key){
-    char *index = message;
+int begin=0;char s;count=0,int end;    
+char *index = message;
     while(*index != '\0'){
         if(*index>= 'A' && *index <= 'Z'){
             if(*index - shift_key < 'A')
