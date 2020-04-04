@@ -59,7 +59,17 @@ char * encrypt(char *message, int shift_key){
 
         index++;
     }
-    return message;
+   s=message;
+   while (s[count] != '\0')
+   count++;
+   end = count - 1;
+   for (begin = 0; begin < count; begin++) 
+   {
+      message[begin] = s[end];
+       end--;
+   }
+  message[begin] = '\0';
+  return message; 
 }
 
 char * decrypt(char *message, int shift_key){
@@ -79,7 +89,17 @@ char * decrypt(char *message, int shift_key){
         }
         index++;
     }
-    return message;
+   s=message;
+   while (s[count] != '\0')
+   count++;
+   end = count - 1;
+   for (begin = 0; begin < count; begin++) 
+   {
+      message[begin] = s[end];
+       end--;
+   }
+  message[begin] = '\0';
+  return message; 
 }
 
 void write_to_file(char * word, int key, char * out, char * type){
