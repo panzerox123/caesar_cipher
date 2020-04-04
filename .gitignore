@@ -1,6 +1,5 @@
 .~lock.Data.xlsx#
-cypher.o
-main_window.o
+*.o
 application
 a.out
 Caesar_Cypher_1.0.0
